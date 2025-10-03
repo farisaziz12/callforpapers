@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
   const payload = await validateBody(event, savedSearchSchema)
   const savedSearches = getSavedSearches(event)
 
-  await savedSearches.create(user.id, payload)
+  await savedSearches.create(user.sub, payload)
 
   return { success: true }
 })

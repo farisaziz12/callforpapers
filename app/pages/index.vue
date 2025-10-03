@@ -6,6 +6,7 @@
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute -top-40 -right-40 w-80 h-80 bg-blue-400/20 dark:bg-blue-600/10 rounded-full blur-3xl animate-pulse"></div>
         <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-400/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-400/10 dark:bg-indigo-600/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 0.5s;"></div>
       </div>
 
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
@@ -13,20 +14,20 @@
           <!-- Badge -->
           <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-full mb-6 border border-gray-200/50 dark:border-gray-700/50 animate-fade-in">
             <Icon name="i-heroicons-sparkles" class="w-4 h-4 text-blue-600 dark:text-blue-400" />
-            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Your Gateway to Speaking Opportunities</span>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Built by speakers, for speakers</span>
           </div>
 
           <h1 class="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl md:text-7xl lg:text-8xl animate-slide-up">
-            Share Your Voice
+            Find Your Next
             <br>
             <span class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
-              With the World
+              Speaking Stage
             </span>
           </h1>
 
           <p class="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed animate-slide-up" style="animation-delay: 0.1s;">
-            A curated platform connecting speakers with conferences, workshops, and meetups worldwide.
-            <strong>Never miss another call for papers.</strong> Whether you're a seasoned speaker or just starting out, find your perfect opportunity.
+            The CFP management platform designed by speakers who understand your journey.
+            Discover conferences, track deadlines, and never miss an opportunity to share your expertise with the world.
           </p>
 
           <!-- Key benefits -->
@@ -65,40 +66,36 @@
             </UButton>
           </div>
 
-          <!-- Trust indicators -->
-          <p class="mt-8 text-sm text-gray-500 dark:text-gray-400 animate-fade-in" style="animation-delay: 0.4s;">
-            Trusted by speakers from companies like Google, Microsoft, Amazon, and more
-          </p>
         </div>
       </div>
     </div>
 
     <!-- How it Works -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white dark:bg-gray-900">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 animate-fade-in">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">How It Works</h2>
         <p class="text-lg text-gray-600 dark:text-gray-300">Find and submit to speaking opportunities in three simple steps</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="text-center group hover:scale-105 transition-transform duration-300">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4 group-hover:rotate-12 transition-transform">
+        <div class="text-center group hover:scale-105 transition-all duration-500 animate-slide-up" style="animation-delay: 0.1s;">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
             <Icon name="i-heroicons-magnifying-glass" class="w-8 h-8" />
           </div>
           <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">1. Search & Filter</h3>
           <p class="text-gray-600 dark:text-gray-400">Browse through curated CFPs filtered by topic, location, format, and perks.</p>
         </div>
 
-        <div class="text-center group hover:scale-105 transition-transform duration-300">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-4 group-hover:rotate-12 transition-transform">
+        <div class="text-center group hover:scale-105 transition-all duration-500 animate-slide-up" style="animation-delay: 0.2s;">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
             <Icon name="i-heroicons-bookmark" class="w-8 h-8" />
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">2. Save Favorites</h3>
-          <p class="text-gray-600 dark:text-gray-400">Save searches and bookmark opportunities that match your expertise and interests.</p>
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">2. Track Progress</h3>
+          <p class="text-gray-600 dark:text-gray-400">Manage your submissions, track deadlines, and never miss an opportunity again.</p>
         </div>
 
-        <div class="text-center group hover:scale-105 transition-transform duration-300">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 mb-4 group-hover:rotate-12 transition-transform">
+        <div class="text-center group hover:scale-105 transition-all duration-500 animate-slide-up" style="animation-delay: 0.3s;">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
             <Icon name="i-heroicons-paper-airplane" class="w-8 h-8" />
           </div>
           <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">3. Submit & Speak</h3>
@@ -109,29 +106,84 @@
 
     <!-- Quick Filters -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50 dark:bg-gray-800/50">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 animate-fade-in">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">Browse by Category</h2>
         <p class="text-lg text-gray-600 dark:text-gray-300">Quick filters to help you find relevant opportunities</p>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
         <NuxtLink
-          v-for="filter in quickFilters"
+          v-for="(filter, index) in quickFilters"
           :key="filter.value"
           :to="`/search?${filter.param}=${filter.value}`"
-          class="group relative overflow-hidden bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          class="group relative overflow-hidden bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl p-6 hover:border-blue-500 dark:hover:border-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-1 animate-slide-up"
+          :style="`animation-delay: ${index * 0.1}s;`"
         >
           <div class="flex flex-col items-center justify-center text-center">
-            <Icon :name="filter.icon" class="w-10 h-10 mb-3 text-gray-700 dark:text-gray-300 group-hover:scale-110 transition-transform" />
+            <Icon :name="filter.icon" class="w-10 h-10 mb-3 text-gray-700 dark:text-gray-300 group-hover:scale-125 transition-all duration-300" />
             <span class="text-base font-medium text-gray-900 dark:text-white">{{ filter.label }}</span>
           </div>
           <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </NuxtLink>
       </div>
 
+<!-- Active CFPs Section -->
+      <div class="mb-16">
+        <div class="flex justify-between items-center mb-8 animate-fade-in">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">Active Call for Papers</h2>
+            <p class="text-gray-600 dark:text-gray-400">Currently accepting speaker proposals</p>
+          </div>
+          <UButton
+            to="/search"
+            variant="solid"
+            size="lg"
+            class="hidden sm:flex hover:scale-105 transition-transform duration-300"
+          >
+            View All
+            <Icon name="i-heroicons-arrow-right" class="w-4 h-4 ml-2" />
+          </UButton>
+        </div>
+
+        <div v-if="pendingActive" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <USkeleton
+            v-for="i in 6"
+            :key="i"
+            class="h-64"
+          />
+        </div>
+
+        <div v-else-if="errorActive" class="text-center py-12">
+          <UAlert
+            icon="i-heroicons-exclamation-triangle"
+            color="red"
+            variant="soft"
+            title="Failed to load CFPs"
+            :description="errorActive.message"
+          />
+        </div>
+
+        <div v-else-if="activeCfps.length === 0" class="text-center py-12">
+          <div class="text-gray-500 dark:text-gray-400">
+            <Icon name="i-heroicons-magnifying-glass" class="w-12 h-12 mx-auto mb-4" />
+            <p>No active CFPs found.</p>
+          </div>
+        </div>
+
+        <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <CfpCard
+            v-for="(cfp, index) in activeCfps"
+            :key="cfp.id"
+            :cfp="cfp"
+            class="hover:scale-105 hover:-translate-y-2 transition-all duration-300 hover:shadow-xl animate-fade-in"
+            :style="`animation-delay: ${index * 0.1}s;`"
+          />
+        </div>
+      </div>
+
       <!-- Closing Soon Section -->
       <div>
-        <div class="flex justify-between items-center mb-8">
+        <div class="flex justify-between items-center mb-8 animate-fade-in">
           <div>
             <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-2">Closing Soon ⏰</h2>
             <p class="text-gray-600 dark:text-gray-400">Don't miss these opportunities - deadlines approaching!</p>
@@ -140,14 +192,14 @@
             to="/search?closesBefore=7d"
             variant="solid"
             size="lg"
-            class="hidden sm:flex"
+            class="hidden sm:flex hover:scale-105 transition-transform duration-300"
           >
             View All
             <Icon name="i-heroicons-arrow-right" class="w-4 h-4 ml-2" />
           </UButton>
         </div>
 
-        <div v-if="pending" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div v-if="pendingClosing" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <USkeleton
             v-for="i in 6"
             :key="i"
@@ -155,13 +207,13 @@
           />
         </div>
 
-        <div v-else-if="error" class="text-center py-12">
+        <div v-else-if="errorClosing" class="text-center py-12">
           <UAlert
             icon="i-heroicons-exclamation-triangle"
             color="red"
             variant="soft"
             title="Failed to load CFPs"
-            :description="error.message"
+            :description="errorClosing.message"
           />
         </div>
 
@@ -174,9 +226,11 @@
 
         <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <CfpCard
-            v-for="cfp in closingSoon"
+            v-for="(cfp, index) in closingSoon"
             :key="cfp.id"
             :cfp="cfp"
+            class="hover:scale-105 hover:-translate-y-2 transition-all duration-300 hover:shadow-xl animate-fade-in"
+            :style="`animation-delay: ${index * 0.1}s;`"
           />
         </div>
       </div>
@@ -201,10 +255,21 @@ const quickFilters = [
   { label: 'Travel Covered', value: 'travel', param: 'perks', icon: 'i-heroicons-paper-airplane' }
 ]
 
+// Fetch active CFPs
+const { data: activeCfps, pending: pendingActive, error: errorActive } = await useFetch<{ items: CfpCardDTO[] }>('/api/search', {
+  query: {
+    pageSize: 6,
+    sortBy: 'created_at',
+    sortOrder: 'desc'
+  },
+  transform: (data: any) => data.items || []
+})
+
+// Fetch closing soon CFPs
 const nextWeek = new Date()
 nextWeek.setDate(nextWeek.getDate() + 7)
 
-const { data: closingSoon, pending, error } = await useFetch<{ items: CfpCardDTO[] }>('/api/search', {
+const { data: closingSoon, pending: pendingClosing, error: errorClosing } = await useFetch<{ items: CfpCardDTO[] }>('/api/search', {
   query: {
     closesBefore: nextWeek.toISOString(),
     pageSize: 6

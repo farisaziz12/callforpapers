@@ -37,3 +37,94 @@ export const savedSearchSchema = z.object({
   name: z.string().min(1, 'Search name is required'),
   filters: searchParamsSchema,
 })
+
+// User Profile
+export const userProfileSchema = z.object({
+  fullName: z.string().optional(),
+  bio: z.string().max(500).optional(),
+  avatarUrl: z.string().url().optional().or(z.literal('')),
+  websiteUrl: z.string().url().optional().or(z.literal('')),
+  twitterHandle: z.string().optional(),
+  linkedinUrl: z.string().url().optional().or(z.literal('')),
+  githubUrl: z.string().url().optional().or(z.literal('')),
+  speakingExperience: z.enum(['beginner', 'intermediate', 'expert']).optional(),
+  preferredTopics: z.array(z.string()).default([]),
+  preferredFormats: z.array(z.string()).default([]),
+  willingToTravel: z.boolean().default(true),
+  availableForSpeaking: z.boolean().default(true),
+})
+
+// User Submission
+export const submissionStatusSchema = z.enum([
+  'interested',
+  'applied',
+  'accepted',
+  'rejected',
+  'withdrawn',
+  'waitlisted'
+])
+
+export const createSubmissionSchema = z.object({
+  cfpId: z.string().uuid(),
+  status: submissionStatusSchema,
+  talkTitle: z.string().optional(),
+  talkAbstract: z.string().optional(),
+  appliedAt: z.string().optional(),
+  notes: z.string().optional(),
+})
+
+export const updateSubmissionSchema = z.object({
+  status: submissionStatusSchema.optional(),
+  talkTitle: z.string().optional(),
+  talkAbstract: z.string().optional(),
+  appliedAt: z.string().optional(),
+  responseReceivedAt: z.string().optional(),
+  notes: z.string().optional(),
+})
+
+// Conference Rating
+export const createRatingSchema = z.object({
+  cfpId: z.string().uuid(),
+  rating: z.number().int().min(1).max(5),
+  reviewTitle: z.string().max(100).optional(),
+  reviewText: z.string().max(1000).optional(),
+  wouldRecommend: z.boolean().default(true),
+  organizerResponsiveness: z.number().int().min(1).max(5).optional(),
+  speakerExperience: z.number().int().min(1).max(5).optional(),
+})
+
+export const updateRatingSchema = createRatingSchema.partial().omit({ cfpId: true })
+
+// User Talk Library
+export const createTalkSchema = z.object({
+  title: z.string().min(1, 'Title is required'),
+  abstract: z.string().min(1, 'Abstract is required'),
+  description: z.string().optional(),
+  topics: z.array(z.string()).default([]),
+  durationMinutes: z.number().int().min(1).optional(),
+  slidesUrl: z.string().url().optional().or(z.literal('')),
+  videoUrl: z.string().url().optional().or(z.literal('')),
+  githubUrl: z.string().url().optional().or(z.literal('')),
+})
+
+export const updateTalkSchema = createTalkSchema.partial()
+
+// Notification Preferences
+export const notificationPreferencesSchema = z.object({
+  emailNotifications: z.boolean().default(true),
+  deadlineReminders: z.boolean().default(true),
+  newCfpAlerts: z.boolean().default(true),
+  savedSearchDigest: z.boolean().default(true),
+  digestFrequency: z.enum(['daily', 'weekly', 'monthly']).default('weekly'),
+  pushNotifications: z.boolean().default(false),
+})
+
+// Map Search
+export const mapSearchParamsSchema = searchParamsSchema.extend({
+  bounds: z.object({
+    north: z.number(),
+    south: z.number(),
+    east: z.number(),
+    west: z.number(),
+  }).optional(),
+})

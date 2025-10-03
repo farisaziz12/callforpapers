@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   const user = await auth.getCurrentUser(event)
 
   const savedSearches = getSavedSearches(event)
-  const searches = await savedSearches.list(user.id)
+  const searches = await savedSearches.list(user.sub)
 
   return searches
 })

@@ -23,21 +23,21 @@
               class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium"
               active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
             >
-              Search CFPs
+              Search
+            </NuxtLink>
+            <NuxtLink
+              to="/search/map"
+              class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium"
+              active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
+            >
+              Countries
             </NuxtLink>
             <NuxtLink
               to="/submit"
               class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium"
               active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
             >
-              Submit CFP
-            </NuxtLink>
-            <NuxtLink
-              to="/account/saved-searches"
-              class="px-4 py-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium"
-              active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
-            >
-              Saved Searches
+              Submit
             </NuxtLink>
           </nav>
 
@@ -54,6 +54,24 @@
                 class="w-5 h-5 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               />
             </button>
+
+            <!-- User Menu -->
+            <div v-if="user" class="hidden md:block">
+              <UDropdown :items="userMenuItems" :popper="{ placement: 'bottom-end' }">
+                <UButton variant="ghost" size="sm" class="flex items-center gap-2">
+                  <UAvatar
+                    :src="userProfile?.avatarUrl"
+                    :alt="userProfile?.fullName || user.email"
+                    size="xs"
+                  />
+                  <span class="hidden lg:inline text-sm">{{ userProfile?.fullName || user.email?.split('@')[0] }}</span>
+                  <Icon name="i-heroicons-chevron-down" class="w-4 h-4" />
+                </UButton>
+              </UDropdown>
+            </div>
+            <UButton v-else to="/login" variant="solid" size="sm" class="hidden md:flex">
+              Sign In
+            </UButton>
 
             <!-- Mobile menu button -->
             <UButton
@@ -140,6 +158,57 @@
 <script setup>
 const colorMode = useColorMode()
 const showMobileMenu = ref(false)
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
+
+// Fetch user profile only if user is logged in
+const userProfile = ref(null)
+
+watchEffect(async () => {
+  if (user.value) {
+    try {
+      const data = await $fetch('/api/user/profile')
+      userProfile.value = data
+    } catch (error) {
+      console.error('Failed to fetch user profile:', error)
+      userProfile.value = null
+    }
+  } else {
+    userProfile.value = null
+  }
+})
+
+const userMenuItems = computed(() => [[
+  {
+    label: 'Dashboard',
+    icon: 'i-heroicons-squares-2x2',
+    to: '/dashboard'
+  },
+  {
+    label: 'My Submissions',
+    icon: 'i-heroicons-paper-airplane',
+    to: '/account/submissions'
+  },
+  {
+    label: 'Saved Searches',
+    icon: 'i-heroicons-bookmark',
+    to: '/account/saved-searches'
+  },
+  {
+    label: 'Profile Settings',
+    icon: 'i-heroicons-user-circle',
+    to: '/account/profile'
+  }
+], [
+  {
+    label: 'Sign Out',
+    icon: 'i-heroicons-arrow-right-on-rectangle',
+    click: async () => {
+      await supabase.auth.signOut()
+      await navigateTo('/login')
+    }
+  }
+]])
 
 function toggleColorMode() {
   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'

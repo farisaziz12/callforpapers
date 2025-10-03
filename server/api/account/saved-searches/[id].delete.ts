@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
   const savedSearches = getSavedSearches(event)
 
   try {
-    await savedSearches.delete(id, user.id)
+    await savedSearches.delete(id, user.sub)
     return { success: true, message: 'Saved search deleted successfully' }
   } catch (error: any) {
     return createNotFoundResponse(error.message)

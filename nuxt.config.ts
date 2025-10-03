@@ -8,9 +8,9 @@ export default defineNuxtConfig({
   ],
   supabase: {
     redirectOptions: {
-      login: '/admin/login',
-      callback: '/admin/auth/callback',
-      exclude: ['/', '/search', '/cfp/*', '/submit']
+      login: '/login',
+      callback: '/auth/callback',
+      exclude: ['/', '/search', '/search/map', '/cfp/*', '/submit', '/login', '/auth/*']
     }
   },
   runtimeConfig: {
