@@ -148,8 +148,17 @@ CREATE TRIGGER update_saved_searches_updated_at
   FOR EACH ROW
   EXECUTE FUNCTION update_updated_at_column();
 
+-- Function to automatically update last_updated_at timestamp for cfps
+CREATE OR REPLACE FUNCTION update_last_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.last_updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
 -- Trigger for cfps last_updated_at
 CREATE TRIGGER update_cfps_last_updated_at
   BEFORE UPDATE ON cfps
   FOR EACH ROW
-  EXECUTE FUNCTION update_updated_at_column();
+  EXECUTE FUNCTION update_last_updated_at_column();
