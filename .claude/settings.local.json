@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn add:*)",
+      "Bash(yarn typecheck)",
+      "Bash(yarn build:*)",
+      "Bash(yarn remove:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
