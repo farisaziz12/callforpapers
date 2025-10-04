@@ -36,7 +36,13 @@ export default defineEventHandler(async (event) => {
     if (error.code === '23505') { // Unique violation
       throw createError({
         statusCode: 409,
-        message: 'You have already tracked this CFP'
+        message: 'You already have a talk with this title for this CFP. Please use a different title.'
+      })
+    }
+    if (error.code === '23502') { // Not null violation for talk_title
+      throw createError({
+        statusCode: 400,
+        message: 'Talk title is required'
       })
     }
     throw createError({

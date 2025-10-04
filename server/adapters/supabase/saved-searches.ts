@@ -46,11 +46,11 @@ export class SupabaseSavedSearches implements ISavedSearches {
     const insert: DbSavedSearchInsert = {
       user_id: userId,
       name,
-      filter_query: filters.q ?? null,
-      filter_country: filters.country ?? null,
-      filter_topic: filters.topic ?? null,
-      filter_format: filters.format ?? null,
-      filter_closes_before: filters.closesBefore ?? null,
+      filter_query: filters.q || null,
+      filter_country: filters.country || null,
+      filter_topic: filters.topic || null,
+      filter_format: filters.format || null,
+      filter_closes_before: filters.closesBefore || null,
     }
 
     const { data, error } = await supabase

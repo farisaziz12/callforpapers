@@ -178,25 +178,25 @@
               </UFormGroup>
             </div>
           </div>
-
-          <template #footer>
-            <div class="flex justify-end space-x-3">
-              <UButton
-                type="button"
-                variant="outline"
-                @click="showCreateModal = false"
-              >
-                Cancel
-              </UButton>
-              <UButton
-                type="submit"
-                :loading="creating"
-              >
-                Save Search
-              </UButton>
-            </div>
-          </template>
         </UForm>
+
+        <template #footer>
+          <div class="flex justify-end space-x-3">
+            <UButton
+              type="button"
+              variant="outline"
+              @click="showCreateModal = false"
+            >
+              Cancel
+            </UButton>
+            <UButton
+              @click="handleCreate"
+              :loading="creating"
+            >
+              Save Search
+            </UButton>
+          </div>
+        </template>
       </UCard>
     </UModal>
   </div>
@@ -220,7 +220,13 @@ const creating = ref(false)
 
 const createForm = reactive({
   name: '',
-  filters: {} as SearchParams
+  filters: {
+    q: '',
+    country: '',
+    topic: '',
+    format: '',
+    closesBefore: ''
+  } as SearchParams
 })
 
 // Options for dropdowns (simplified for demo)
@@ -303,7 +309,16 @@ async function handleCreate() {
     })
 
     showCreateModal.value = false
-    Object.assign(createForm, { name: '', filters: {} })
+    Object.assign(createForm, {
+      name: '',
+      filters: {
+        q: '',
+        country: '',
+        topic: '',
+        format: '',
+        closesBefore: ''
+      }
+    })
     await refresh()
   } catch (error) {
     console.error('Failed to create saved search:', error)

@@ -105,7 +105,15 @@
                 active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
                 @click="showMobileMenu = false"
               >
-                Search CFPs
+                Search
+              </NuxtLink>
+              <NuxtLink
+                to="/search/map"
+                class="block px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium"
+                active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
+                @click="showMobileMenu = false"
+              >
+                Countries
               </NuxtLink>
               <NuxtLink
                 to="/submit"
@@ -113,16 +121,70 @@
                 active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
                 @click="showMobileMenu = false"
               >
-                Submit CFP
+                Submit
               </NuxtLink>
-              <NuxtLink
-                to="/account/saved-searches"
-                class="block px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium"
-                active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
-                @click="showMobileMenu = false"
-              >
-                Saved Searches
-              </NuxtLink>
+
+              <!-- User Menu Items (Mobile) -->
+              <template v-if="user">
+                <div class="border-t border-gray-200 dark:border-gray-700 my-2 pt-2">
+                  <NuxtLink
+                    to="/dashboard"
+                    class="block px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium"
+                    active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
+                    @click="showMobileMenu = false"
+                  >
+                    <Icon name="i-heroicons-squares-2x2" class="w-4 h-4 inline mr-2" />
+                    Dashboard
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/account/submissions"
+                    class="block px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium"
+                    active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
+                    @click="showMobileMenu = false"
+                  >
+                    <Icon name="i-heroicons-paper-airplane" class="w-4 h-4 inline mr-2" />
+                    My Submissions
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/account/saved-searches"
+                    class="block px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium"
+                    active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
+                    @click="showMobileMenu = false"
+                  >
+                    <Icon name="i-heroicons-bookmark" class="w-4 h-4 inline mr-2" />
+                    Saved Searches
+                  </NuxtLink>
+                  <NuxtLink
+                    to="/account/profile"
+                    class="block px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium"
+                    active-class="!bg-blue-50 dark:!bg-blue-900/20 !text-blue-600 dark:!text-blue-400"
+                    @click="showMobileMenu = false"
+                  >
+                    <Icon name="i-heroicons-user-circle" class="w-4 h-4 inline mr-2" />
+                    Profile Settings
+                  </NuxtLink>
+                  <button
+                    @click="handleSignOut"
+                    class="block w-full text-left px-4 py-3 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-blue-600 dark:hover:text-blue-400 transition-all font-medium"
+                  >
+                    <Icon name="i-heroicons-arrow-right-on-rectangle" class="w-4 h-4 inline mr-2" />
+                    Sign Out
+                  </button>
+                </div>
+              </template>
+
+              <!-- Sign In Button (Mobile) -->
+              <template v-else>
+                <div class="border-t border-gray-200 dark:border-gray-700 my-2 pt-2">
+                  <NuxtLink
+                    to="/login"
+                    class="block px-4 py-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-all font-medium text-center"
+                    @click="showMobileMenu = false"
+                  >
+                    Sign In
+                  </NuxtLink>
+                </div>
+              </template>
             </nav>
           </div>
         </Transition>
@@ -212,6 +274,12 @@ const userMenuItems = computed(() => [[
 
 function toggleColorMode() {
   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
+}
+
+async function handleSignOut() {
+  showMobileMenu.value = false
+  await supabase.auth.signOut()
+  await navigateTo('/login')
 }
 
 // Close mobile menu when route changes

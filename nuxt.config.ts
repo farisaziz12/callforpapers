@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { ssr: true },
     '/search': { ssr: true },
-    '/cfp/**': { ssr: true },
+    '/cfp/**': { isr: 3600 }, // Incremental Static Regeneration every 1 hour
     '/api/**': { cors: true }
   },
   nitro: {

@@ -72,26 +72,6 @@
                 {{ isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign up" }}
               </button>
             </div>
-
-            <div class="relative">
-              <div class="absolute inset-0 flex items-center">
-                <div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
-              </div>
-              <div class="relative flex justify-center text-sm">
-                <span class="px-2 bg-white dark:bg-gray-800 text-gray-500">Or continue with</span>
-              </div>
-            </div>
-
-            <UButton
-              type="button"
-              variant="outline"
-              class="w-full"
-              @click="signInWithGithub"
-              :loading="githubLoading"
-            >
-              <Icon name="i-simple-icons-github" class="w-5 h-5 mr-2" />
-              GitHub
-            </UButton>
           </div>
         </UForm>
       </UCard>
@@ -114,7 +94,6 @@ const route = useRoute()
 
 const isSignup = ref(false)
 const loading = ref(false)
-const githubLoading = ref(false)
 const error = ref('')
 const success = ref('')
 
@@ -189,25 +168,6 @@ async function handleSubmit() {
     error.value = err.message || 'An error occurred. Please try again.'
   } finally {
     loading.value = false
-  }
-}
-
-async function signInWithGithub() {
-  githubLoading.value = true
-  error.value = ''
-
-  try {
-    const { error: authError } = await supabase.auth.signInWithOAuth({
-      provider: 'github',
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback?redirect=${redirectTo.value}`
-      }
-    })
-
-    if (authError) throw authError
-  } catch (err: any) {
-    error.value = err.message || 'Failed to sign in with GitHub'
-    githubLoading.value = false
   }
 }
 </script>

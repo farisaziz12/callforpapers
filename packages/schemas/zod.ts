@@ -67,7 +67,7 @@ export const submissionStatusSchema = z.enum([
 export const createSubmissionSchema = z.object({
   cfpId: z.string().uuid(),
   status: submissionStatusSchema,
-  talkTitle: z.string().optional(),
+  talkTitle: z.string().min(1, 'Talk title is required'),
   talkAbstract: z.string().optional(),
   appliedAt: z.string().optional(),
   notes: z.string().optional(),

@@ -1,14 +1,21 @@
-import { getSavedSearches, getAuth } from '../../../adapters/container'
+import { serverSupabaseUser } from '#supabase/server'
+import { getSavedSearches } from '../../../adapters/container'
 import { createNotFoundResponse } from '../../../lib/response'
 
 export default defineEventHandler(async (event) => {
+  const user = await serverSupabaseUser(event)
+
+  if (!user) {
+    throw createError({
+      statusCode: 401,
+      message: 'Unauthorized'
+    })
+  }
+
   const id = getRouterParam(event, 'id')
   if (!id) {
     return createNotFoundResponse('Saved search ID is required')
   }
-
-  const auth = getAuth()
-  const user = await auth.getCurrentUser(event)
 
   const savedSearches = getSavedSearches(event)
 
