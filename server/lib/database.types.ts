@@ -31,6 +31,8 @@ export interface Database {
           timeline_closes_at: string
           platform: string | null
           notes: string | null
+          conference_starts_at: string | null
+          conference_ends_at: string | null
           last_updated_at: string
           created_at: string
         }
@@ -52,6 +54,8 @@ export interface Database {
           timeline_closes_at: string
           platform?: string | null
           notes?: string | null
+          conference_starts_at?: string | null
+          conference_ends_at?: string | null
           last_updated_at?: string
           created_at?: string
         }
@@ -73,6 +77,8 @@ export interface Database {
           timeline_closes_at?: string
           platform?: string | null
           notes?: string | null
+          conference_starts_at?: string | null
+          conference_ends_at?: string | null
           last_updated_at?: string
           created_at?: string
         }
@@ -88,6 +94,8 @@ export interface Database {
           conference_city: string
           conference_country: string
           conference_platform: string | null
+          conference_starts_at: string | null
+          conference_ends_at: string | null
           cfp_title: string
           cfp_url: string
           cfp_topics: string[]
@@ -109,6 +117,8 @@ export interface Database {
           conference_city: string
           conference_country: string
           conference_platform?: string | null
+          conference_starts_at?: string | null
+          conference_ends_at?: string | null
           cfp_title: string
           cfp_url: string
           cfp_topics?: string[]
@@ -130,6 +140,8 @@ export interface Database {
           conference_city?: string
           conference_country?: string
           conference_platform?: string | null
+          conference_starts_at?: string | null
+          conference_ends_at?: string | null
           cfp_title?: string
           cfp_url?: string
           cfp_topics?: string[]

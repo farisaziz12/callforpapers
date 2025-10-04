@@ -666,6 +666,13 @@
     "@eslint/core" "^0.15.2"
     levn "^0.4.1"
 
+"@fingerprintjs/botd@^1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@fingerprintjs/botd/-/botd-1.9.1.tgz#6217541bc822bef4f17b3b1931955d2ddac5d4ec"
+  integrity sha512-7kv3Yolsx9E56i+L1hCEcupH5yqcI5cmVktxy6B0K7rimaH5qDXwsiA5FL+fkxeUny7XQKn7p13HvK7ofDZB3g==
+  dependencies:
+    tslib "^2.4.0"
+
 "@headlessui/tailwindcss@^0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@headlessui/tailwindcss/-/tailwindcss-0.2.2.tgz#8ebde73fabca72d48636ea56ae790209dc5f0d49"
@@ -701,10 +708,17 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/retry/-/retry-0.4.3.tgz#c2b9d2e374ee62c586d3adbea87199b1d7a7a6ba"
   integrity sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==
 
-"@iconify-json/heroicons@^1.2.2":
+"@iconify-json/heroicons@^1.1.21", "@iconify-json/heroicons@^1.2.2":
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@iconify-json/heroicons/-/heroicons-1.2.3.tgz#041fe0d689535dddc51e97c8b692cdff792ac4b2"
   integrity sha512-n+vmCEgTesRsOpp5AB5ILB6srsgsYK+bieoQBNlafvoEhjVXLq8nIGN4B0v/s4DUfa0dOrjwE/cKJgIKdJXOEg==
+  dependencies:
+    "@iconify/types" "*"
+
+"@iconify-json/lucide@^1.1.197":
+  version "1.2.68"
+  resolved "https://registry.yarnpkg.com/@iconify-json/lucide/-/lucide-1.2.68.tgz#0a21fa635c6e1a5c15ad2590692a912c83c40809"
+  integrity sha512-lR5xNJdn2CT0iR7lM25G4SewBO4G2hbr3fTWOc3AE9BspflEcneh02E3l9TBaCU/JOHozTJevWLrxBGypD7Tng==
   dependencies:
     "@iconify/types" "*"
 
@@ -720,7 +734,7 @@
   resolved "https://registry.yarnpkg.com/@iconify/types/-/types-2.0.0.tgz#ab0e9ea681d6c8a1214f30cd741fe3a20cc57f57"
   integrity sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==
 
-"@iconify/utils@^2.3.0":
+"@iconify/utils@^2.1.32", "@iconify/utils@^2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@iconify/utils/-/utils-2.3.0.tgz#1bbbf8c477ebe9a7cacaea78b1b7e8937f9cbfba"
   integrity sha512-GmQ78prtwYW6EtzXRU1rY+KwOKfz32PD7iJh6Iyqw68GiKuoZ2A6pRtzWONz5VQJbp50mEjXh/7NkumtrAgRKA==
@@ -957,7 +971,7 @@
   resolved "https://registry.yarnpkg.com/@nuxt/devalue/-/devalue-2.0.2.tgz#5749f04df13bda4c863338d8dabaf370f45ef7c7"
   integrity sha512-GBzP8zOc7CGWyFQS6dv1lQz8VVpz5C2yRszbXufwG/9zhStTIH50EtD87NmWbTMwXDvZLNg8GIpb1UFdH93JCA==
 
-"@nuxt/devtools-kit@2.6.5", "@nuxt/devtools-kit@^2.5.0":
+"@nuxt/devtools-kit@2.6.5", "@nuxt/devtools-kit@^2.5.0", "@nuxt/devtools-kit@^2.6.3":
   version "2.6.5"
   resolved "https://registry.yarnpkg.com/@nuxt/devtools-kit/-/devtools-kit-2.6.5.tgz#a1e769fcee0565f9ce27c7ab887d143c687ef265"
   integrity sha512-t+NxoENyzJ8KZDrnbVYv3FJI5VXqSi6X4w6ZsuIIh0aKABu6+6k9nR/LoEhrM0oekn/2LDhA0NmsRZyzCXt2xQ==
@@ -1095,7 +1109,7 @@
     std-env "^3.9.0"
     tinyglobby "^0.2.14"
 
-"@nuxt/kit@4.1.2", "@nuxt/kit@^4.0.3":
+"@nuxt/kit@4.1.2", "@nuxt/kit@^4.0.3", "@nuxt/kit@^4.1.2":
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-4.1.2.tgz#e2d8d6ed1b6a5c2964a9a4a66af04e943b3002ca"
   integrity sha512-P5q41xeEOa6ZQC0PvIP7TSBmOAMxXK4qihDcCbYIJq8RcVsEPbGZVlidmxE6EOw1ucSyodq9nbV31FAKwoL4NQ==
@@ -1269,6 +1283,44 @@
     pathe "^1.1.2"
     pkg-types "^1.2.1"
     semver "^7.6.3"
+
+"@nuxtjs/robots@^5.5.5":
+  version "5.5.5"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/robots/-/robots-5.5.5.tgz#4c294d943a73c840a9039d1fad33cf30f95a76f2"
+  integrity sha512-ZJZQHFrahJITNakvRx2+TAHH2xQMO0BHYANlPVQ2ZU7s3wQMnOjaYAyAuTjzbHlLqUqurpQQtYT3WNrsl3QpJg==
+  dependencies:
+    "@fingerprintjs/botd" "^1.9.1"
+    "@nuxt/kit" "^4.1.2"
+    consola "^3.4.2"
+    defu "^6.1.4"
+    nuxt-site-config "^3.2.5"
+    pathe "^2.0.3"
+    pkg-types "^2.3.0"
+    sirv "^3.0.2"
+    std-env "^3.9.0"
+    ufo "^1.6.1"
+
+"@nuxtjs/sitemap@^7.4.7":
+  version "7.4.7"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/sitemap/-/sitemap-7.4.7.tgz#73509c4fc4578545968676ad3ed8c7c77ef91bf8"
+  integrity sha512-DUhX92lnCJD6tpghUmfmRIsSIoiXMS2SQ2Yd9Tg1+SnZskiKX+DGwLeAeHX8r0/9Pl/bTDpmYhs1snWcCoIkXA==
+  dependencies:
+    "@nuxt/devtools-kit" "^2.6.3"
+    "@nuxt/kit" "^4.1.2"
+    chalk "^5.6.2"
+    defu "^6.1.4"
+    fast-xml-parser "^5.2.5"
+    h3-compression "^0.3.2"
+    nuxt-site-config "^3.2.5"
+    ofetch "^1.4.1"
+    pathe "^2.0.3"
+    pkg-types "^2.3.0"
+    radix3 "^1.1.2"
+    semver "^7.7.2"
+    sirv "^3.0.2"
+    std-env "^3.9.0"
+    ufo "^1.6.1"
+    ultrahtml "^1.6.0"
 
 "@nuxtjs/supabase@^2.0.0":
   version "2.0.0"
@@ -2958,6 +3010,11 @@ chalk@^4.0.0, chalk@^4.1.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
+chalk@^5.6.2:
+  version "5.6.2"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.6.2.tgz#b1238b6e23ea337af71c7f8a295db5af0c158aea"
+  integrity sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==
+
 chokidar@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.6.0.tgz#197c6cc669ef2a8dc5e7b4d97ee4e092c3eb0d5b"
@@ -4006,6 +4063,13 @@ fast-npm-meta@^0.4.6:
   resolved "https://registry.yarnpkg.com/fast-npm-meta/-/fast-npm-meta-0.4.7.tgz#c5f3d60cac2b0f1d186a8dd252ae85dddd60e5d8"
   integrity sha512-aZU3i3eRcSb2NCq8i6N6IlyiTyF6vqAqzBGl2NBF6ngNx/GIqfYbkLDIKZ4z4P0o/RmtsFnVqHwdrSm13o4tnQ==
 
+fast-xml-parser@^5.2.5:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-5.3.0.tgz#ae388d5a0f6ed31c8ce9e413c1ac89c8e57e7b07"
+  integrity sha512-gkWGshjYcQCF+6qtlrqBqELqNqnt4CxruY6UVAWWnqb3DQ6qaNFEIKqzYep1XzHLM/QtrHVCxyPOtTk4LTQ7Aw==
+  dependencies:
+    strnum "^2.1.0"
+
 fastq@^1.15.0, fastq@^1.6.0:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.19.1.tgz#d50eaba803c8846a883c16492821ebcd2cda55f5"
@@ -4331,6 +4395,11 @@ gzip-size@^7.0.0:
   integrity sha512-O1Ld7Dr+nqPnmGpdhzLmMTQ4vAsD+rHwMm1NLUmoUFFymBOMKxCCrtDxqdBRYXdeEPEi3SyoR4TizJLQrnKBNA==
   dependencies:
     duplexer "^0.1.2"
+
+h3-compression@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/h3-compression/-/h3-compression-0.3.2.tgz#2d5e803a0a51fabf32deb34fa82e108577f6922b"
+  integrity sha512-B+yCKyDRnO0BXSfjAP4tCXJgJwmnKp3GyH5Yh66mY9KuOCrrGQSPk/gBFG2TgH7OyB/6mvqNZ1X0XNVuy0qRsw==
 
 h3@^1.12.0, h3@^1.13.0, h3@^1.15.1, h3@^1.15.4:
   version "1.15.4"
@@ -5480,6 +5549,30 @@ nth-check@^2.0.1, nth-check@^2.1.1:
   integrity sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==
   dependencies:
     boolbase "^1.0.0"
+
+nuxt-site-config-kit@3.2.9:
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/nuxt-site-config-kit/-/nuxt-site-config-kit-3.2.9.tgz#414b17cbacb5bd1bd0066036abdb62cb79afd039"
+  integrity sha512-x8DjW9FnR96LqijcFSbZxae/RwqJ/Wr5ossqfrFDIqRWXO8jD/UX8wNQjXkDYYopHThGqdpxlPUj1FieNL2N8A==
+  dependencies:
+    "@nuxt/kit" "^4.1.2"
+    pkg-types "^2.3.0"
+    site-config-stack "3.2.9"
+    std-env "^3.9.0"
+    ufo "^1.6.1"
+
+nuxt-site-config@^3.2.5:
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/nuxt-site-config/-/nuxt-site-config-3.2.9.tgz#dd2bbe38daedfdb962811a2e4d6c6fc1e0c95a52"
+  integrity sha512-Li/q3d8q/dGzWJJw9fFzZp7JnGUudKxB03gZojShYnN4lz15r++vL8ET1Vu7/BTDXaW9dhLRE1f60Et0jGk7ew==
+  dependencies:
+    "@nuxt/kit" "^4.1.2"
+    nuxt-site-config-kit "3.2.9"
+    pathe "^2.0.3"
+    pkg-types "^2.3.0"
+    sirv "^3.0.2"
+    site-config-stack "3.2.9"
+    ufo "^1.6.1"
 
 nuxt@^4.1.2:
   version "4.1.2"
@@ -6703,6 +6796,13 @@ sisteransi@^1.0.5:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.5.tgz#134d681297756437cc05ca01370d3a7a571075ed"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
+site-config-stack@3.2.9:
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/site-config-stack/-/site-config-stack-3.2.9.tgz#ea95d8293ce165ec7ee17b761a2ff42bddc091cb"
+  integrity sha512-VHSClGeW2+pMxb3PAVdnbfuFGuan/PYWB+S7wk89ry4XQixu7zDKFRiyMSzoORs0NGXCmGIjU0ePjwNjs9Zn5Q==
+  dependencies:
+    ufo "^1.6.1"
+
 slash@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-5.1.0.tgz#be3adddcdf09ac38eebe8dcdc7b1a57a75b095ce"
@@ -6906,6 +7006,11 @@ strip-literal@^3.0.0:
   integrity sha512-8r3mkIM/2+PpjHoOtiAW8Rg3jJLHaV7xPwG+YRGrv6FP0wwk/toTpATxWYOW0BKdWwl82VT2tFYi5DlROa0Mxg==
   dependencies:
     js-tokens "^9.0.1"
+
+strnum@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/strnum/-/strnum-2.1.1.tgz#cf2a6e0cf903728b8b2c4b971b7e36b4e82d46ab"
+  integrity sha512-7ZvoFTiCnGxBtDqJ//Cu6fWtZtc7Y3x+QOirG15wztbdngGSkht27o2pyGWrVy0b4WAy3jbKmnoK6g5VlVNUUw==
 
 structured-clone-es@^1.0.0:
   version "1.0.0"

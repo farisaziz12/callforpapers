@@ -1,5 +1,9 @@
 <template>
   <div>
+    <!-- Structured Data -->
+    <StructuredData type="website" />
+    <StructuredData type="organization" />
+
     <!-- Hero Section -->
     <div class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-indigo-950">
       <!-- Animated background elements -->
@@ -30,19 +34,21 @@
             Discover conferences, track deadlines, and never miss an opportunity to share your expertise with the world.
           </p>
 
-          <!-- Key benefits -->
-          <div class="mt-8 flex flex-wrap justify-center gap-4 text-sm text-gray-600 dark:text-gray-400 animate-slide-up" style="animation-delay: 0.2s;">
-            <div class="flex items-center gap-2">
-              <Icon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500" />
-              <span>24+ Active CFPs</span>
+          <!-- Key stats -->
+          <div class="mt-8 flex flex-wrap justify-center gap-6 text-sm animate-slide-up" style="animation-delay: 0.2s;">
+            <div class="flex items-center gap-2 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50 dark:border-gray-700/50">
+              <Icon name="i-heroicons-document-text" class="w-5 h-5 text-blue-500" />
+              <span class="font-semibold text-gray-900 dark:text-white">{{ totalActiveCfps }}</span>
+              <span class="text-gray-600 dark:text-gray-400">Active CFPs</span>
             </div>
-            <div class="flex items-center gap-2">
-              <Icon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500" />
-              <span>Global Coverage</span>
+            <div class="flex items-center gap-2 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50 dark:border-gray-700/50">
+              <Icon name="i-heroicons-globe-alt" class="w-5 h-5 text-green-500" />
+              <span class="font-semibold text-gray-900 dark:text-white">{{ uniqueCountries }}</span>
+              <span class="text-gray-600 dark:text-gray-400">Countries</span>
             </div>
-            <div class="flex items-center gap-2">
-              <Icon name="i-heroicons-check-circle" class="w-5 h-5 text-green-500" />
-              <span>Real-time Updates</span>
+            <div class="flex items-center gap-2 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200/50 dark:border-gray-700/50">
+              <Icon name="i-heroicons-clock" class="w-5 h-5 text-purple-500" />
+              <span class="text-gray-600 dark:text-gray-400">Updated Daily</span>
             </div>
           </div>
 
@@ -70,36 +76,57 @@
       </div>
     </div>
 
-    <!-- How it Works -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-white dark:bg-gray-900">
-      <div class="text-center mb-12 animate-fade-in">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">How It Works</h2>
-        <p class="text-lg text-gray-600 dark:text-gray-300">Find and submit to speaking opportunities in three simple steps</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="text-center group hover:scale-105 transition-all duration-500 animate-slide-up" style="animation-delay: 0.1s;">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-            <Icon name="i-heroicons-magnifying-glass" class="w-8 h-8" />
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">1. Search & Filter</h3>
-          <p class="text-gray-600 dark:text-gray-400">Browse through curated CFPs filtered by topic, location, format, and perks.</p>
+    <!-- Country Coverage -->
+    <div class="bg-white dark:bg-gray-900 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 animate-fade-in">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">Global Opportunities</h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300">Active CFPs across {{ uniqueCountries }} countries worldwide</p>
         </div>
 
-        <div class="text-center group hover:scale-105 transition-all duration-500 animate-slide-up" style="animation-delay: 0.2s;">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-            <Icon name="i-heroicons-bookmark" class="w-8 h-8" />
-          </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">2. Track Progress</h3>
-          <p class="text-gray-600 dark:text-gray-400">Manage your submissions, track deadlines, and never miss an opportunity again.</p>
+        <div v-if="countryStats && countryStats.length > 0" class="flex flex-wrap justify-center gap-4 mb-16">
+          <NuxtLink
+            v-for="(stat, index) in countryStats.slice(0, 12)"
+            :key="stat.country"
+            :to="`/countries/${stat.country.toLowerCase()}`"
+            class="group flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-blue-500 dark:hover:border-blue-400 hover:shadow-md transition-all duration-300 hover:scale-105 animate-slide-up"
+            :style="`animation-delay: ${index * 0.05}s;`"
+          >
+            <span class="text-2xl">{{ getFlagEmoji(stat.country) }}</span>
+            <span class="font-medium text-gray-900 dark:text-white">{{ stat.country }}</span>
+            <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full font-semibold">{{ stat.count }}</span>
+          </NuxtLink>
         </div>
 
-        <div class="text-center group hover:scale-105 transition-all duration-500 animate-slide-up" style="animation-delay: 0.3s;">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
-            <Icon name="i-heroicons-paper-airplane" class="w-8 h-8" />
+        <div class="text-center mb-12 animate-fade-in">
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">How It Works</h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300">Find and submit to speaking opportunities in three simple steps</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center group hover:scale-105 transition-all duration-500 animate-slide-up" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+              <Icon name="i-heroicons-magnifying-glass" class="w-8 h-8" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">1. Search & Filter</h3>
+            <p class="text-gray-600 dark:text-gray-400">Browse through curated CFPs filtered by topic, location, format, and perks.</p>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">3. Submit & Speak</h3>
-          <p class="text-gray-600 dark:text-gray-400">Submit your proposals before the deadline and share your knowledge with the world.</p>
+
+          <div class="text-center group hover:scale-105 transition-all duration-500 animate-slide-up" style="animation-delay: 0.2s;">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+              <Icon name="i-heroicons-bookmark" class="w-8 h-8" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">2. Track Progress</h3>
+            <p class="text-gray-600 dark:text-gray-400">Manage your submissions, track deadlines, and never miss an opportunity again.</p>
+          </div>
+
+          <div class="text-center group hover:scale-105 transition-all duration-500 animate-slide-up" style="animation-delay: 0.3s;">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 mb-4 group-hover:rotate-12 group-hover:scale-110 transition-all duration-300">
+              <Icon name="i-heroicons-paper-airplane" class="w-8 h-8" />
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">3. Submit & Speak</h3>
+            <p class="text-gray-600 dark:text-gray-400">Submit your proposals before the deadline and share your knowledge with the world.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -255,15 +282,90 @@ const quickFilters = [
   { label: 'Travel Covered', value: 'travel', param: 'perks', icon: 'i-heroicons-paper-airplane' }
 ]
 
-// Fetch active CFPs
-const { data: activeCfps, pending: pendingActive, error: errorActive } = await useFetch<{ items: CfpCardDTO[] }>('/api/search', {
+// Fetch active CFPs with total count
+const { data: searchResults, pending: pendingActive, error: errorActive } = await useFetch<{ items: CfpCardDTO[], total: number }>('/api/search', {
   query: {
     pageSize: 6,
     sortBy: 'created_at',
     sortOrder: 'desc'
-  },
-  transform: (data: any) => data.items || []
+  }
 })
+
+const activeCfps = computed(() => searchResults.value?.items || [])
+const totalActiveCfps = computed(() => searchResults.value?.total || 0)
+
+// Fetch country stats
+const { data: countryStats } = await useFetch<{ country: string, count: number }[]>('/api/countries')
+
+const uniqueCountries = computed(() => countryStats.value?.length || 0)
+
+// Helper function to convert country name to flag emoji
+function getFlagEmoji(countryName: string): string {
+  const countryToCode: Record<string, string> = {
+    'United States': 'US',
+    'United Kingdom': 'GB',
+    'Canada': 'CA',
+    'Australia': 'AU',
+    'Germany': 'DE',
+    'France': 'FR',
+    'Spain': 'ES',
+    'Italy': 'IT',
+    'Netherlands': 'NL',
+    'Belgium': 'BE',
+    'Switzerland': 'CH',
+    'Austria': 'AT',
+    'Poland': 'PL',
+    'Sweden': 'SE',
+    'Norway': 'NO',
+    'Denmark': 'DK',
+    'Finland': 'FI',
+    'Ireland': 'IE',
+    'Portugal': 'PT',
+    'Greece': 'GR',
+    'Czech Republic': 'CZ',
+    'Hungary': 'HU',
+    'Romania': 'RO',
+    'Bulgaria': 'BG',
+    'Croatia': 'HR',
+    'India': 'IN',
+    'China': 'CN',
+    'Japan': 'JP',
+    'South Korea': 'KR',
+    'Singapore': 'SG',
+    'Malaysia': 'MY',
+    'Thailand': 'TH',
+    'Indonesia': 'ID',
+    'Philippines': 'PH',
+    'Vietnam': 'VN',
+    'Brazil': 'BR',
+    'Mexico': 'MX',
+    'Argentina': 'AR',
+    'Chile': 'CL',
+    'Colombia': 'CO',
+    'Peru': 'PE',
+    'South Africa': 'ZA',
+    'Nigeria': 'NG',
+    'Kenya': 'KE',
+    'Egypt': 'EG',
+    'Israel': 'IL',
+    'Turkey': 'TR',
+    'United Arab Emirates': 'AE',
+    'Saudi Arabia': 'SA',
+    'New Zealand': 'NZ',
+    'Russia': 'RU',
+    'Ukraine': 'UA'
+  }
+
+  const code = countryToCode[countryName]
+  if (!code) return '🌍'
+
+  // Convert country code to flag emoji
+  const codePoints = code
+    .toUpperCase()
+    .split('')
+    .map(char => 127397 + char.charCodeAt(0))
+  return String.fromCodePoint(...codePoints)
+}
 
 // Fetch closing soon CFPs
 const nextWeek = new Date()

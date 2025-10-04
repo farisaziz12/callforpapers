@@ -21,6 +21,15 @@
           <Icon name="i-heroicons-cube" class="w-4 h-4 mr-2 text-indigo-500 dark:text-indigo-400" />
           {{ formatType(cfp.format) }}
         </div>
+
+        <div v-if="cfp.conferenceStartsAt && cfp.conferenceEndsAt" class="flex items-center text-sm text-gray-600 dark:text-gray-300">
+          <Icon name="i-heroicons-calendar" class="w-4 h-4 mr-2 text-purple-500 dark:text-purple-400" />
+          {{ formatDate(cfp.conferenceStartsAt) }} - {{ formatDate(cfp.conferenceEndsAt) }}
+        </div>
+        <div v-else-if="cfp.conferenceStartsAt" class="flex items-center text-sm text-gray-600 dark:text-gray-300">
+          <Icon name="i-heroicons-calendar" class="w-4 h-4 mr-2 text-purple-500 dark:text-purple-400" />
+          {{ formatDate(cfp.conferenceStartsAt) }}
+        </div>
       </div>
 
       <div class="flex flex-wrap gap-2 mb-4">

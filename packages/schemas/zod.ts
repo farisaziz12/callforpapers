@@ -17,6 +17,8 @@ export const submitFormSchema = z.object({
     city: z.string().min(1, 'City is required'),
     country: z.string().min(1, 'Country is required'),
     platform: z.string().optional(),
+    startsAt: z.string().optional(),
+    endsAt: z.string().optional(),
   }),
   cfp: z.object({
     cfpUrl: z.string().url('Valid CFP URL is required'),

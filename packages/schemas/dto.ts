@@ -13,6 +13,8 @@ export interface CfpCardDTO {
     honorarium: boolean
   }
   lastUpdatedAt: string
+  conferenceStartsAt?: string
+  conferenceEndsAt?: string
 }
 
 export interface CfpDetailDTO extends CfpCardDTO {
@@ -24,6 +26,8 @@ export interface CfpDetailDTO extends CfpCardDTO {
   }
   platform?: string
   notes?: string
+  conferenceStartsAt?: string
+  conferenceEndsAt?: string
 }
 
 export interface ModerationItemDTO {

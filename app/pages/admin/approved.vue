@@ -168,12 +168,24 @@
                   <!-- Timeline -->
                   <div class="grid grid-cols-2 gap-2 text-xs">
                     <div v-if="item.timeline.opensAt">
-                      <span class="text-gray-500 dark:text-gray-500 block">Opens</span>
+                      <span class="text-gray-500 dark:text-gray-500 block">CFP Opens</span>
                       <span class="text-gray-900 dark:text-white font-medium">{{ formatShortDate(item.timeline.opensAt) }}</span>
                     </div>
                     <div>
-                      <span class="text-gray-500 dark:text-gray-500 block">Closes</span>
+                      <span class="text-gray-500 dark:text-gray-500 block">CFP Closes</span>
                       <span class="text-gray-900 dark:text-white font-medium">{{ formatShortDate(item.timeline.closesAt) }}</span>
+                    </div>
+                  </div>
+
+                  <!-- Conference Dates -->
+                  <div v-if="item.conferenceStartsAt || item.conferenceEndsAt" class="grid grid-cols-2 gap-2 text-xs">
+                    <div v-if="item.conferenceStartsAt">
+                      <span class="text-gray-500 dark:text-gray-500 block">Conference Starts</span>
+                      <span class="text-gray-900 dark:text-white font-medium">{{ formatShortDate(item.conferenceStartsAt) }}</span>
+                    </div>
+                    <div v-if="item.conferenceEndsAt">
+                      <span class="text-gray-500 dark:text-gray-500 block">Conference Ends</span>
+                      <span class="text-gray-900 dark:text-white font-medium">{{ formatShortDate(item.conferenceEndsAt) }}</span>
                     </div>
                   </div>
 
@@ -292,11 +304,20 @@
           </UFormGroup>
 
           <div class="grid grid-cols-2 gap-4">
-            <UFormGroup label="Opens At">
+            <UFormGroup label="CFP Opens At">
               <UInput v-model="editingItem.timeline.opensAt" type="datetime-local" />
             </UFormGroup>
-            <UFormGroup label="Closes At" required>
+            <UFormGroup label="CFP Closes At" required>
               <UInput v-model="editingItem.timeline.closesAt" type="datetime-local" />
+            </UFormGroup>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <UFormGroup label="Conference Starts At">
+              <UInput v-model="editingItem.conferenceStartsAt" type="datetime-local" />
+            </UFormGroup>
+            <UFormGroup label="Conference Ends At">
+              <UInput v-model="editingItem.conferenceEndsAt" type="datetime-local" />
             </UFormGroup>
           </div>
 
@@ -421,6 +442,10 @@ function openEditModal(item: CfpDetailDTO) {
   if (editingItem.value && editingItem.value.timeline) {
     editingItem.value.timeline.opensAt = formatDateForInput(editingItem.value.timeline.opensAt) as any
     editingItem.value.timeline.closesAt = formatDateForInput(editingItem.value.timeline.closesAt) as any
+  }
+  if (editingItem.value) {
+    editingItem.value.conferenceStartsAt = formatDateForInput(editingItem.value.conferenceStartsAt) as any
+    editingItem.value.conferenceEndsAt = formatDateForInput(editingItem.value.conferenceEndsAt) as any
   }
   topicsString.value = item.topics.join(', ')
   editModalOpen.value = true

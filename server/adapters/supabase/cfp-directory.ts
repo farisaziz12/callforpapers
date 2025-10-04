@@ -37,6 +37,8 @@ function dbCfpToDTO(dbCfp: DbCfp): CfpDetailDTO {
     },
     platform: dbCfp.platform ?? undefined,
     notes: dbCfp.notes ?? undefined,
+    conferenceStartsAt: dbCfp.conference_starts_at ?? undefined,
+    conferenceEndsAt: dbCfp.conference_ends_at ?? undefined,
   }
 }
 
@@ -180,6 +182,8 @@ export class SupabaseCfpDirectory implements ICfpDirectory {
       timeline_closes_at: moderationItem.cfp_closes_at,
       platform: moderationItem.conference_platform,
       notes: moderationItem.cfp_notes,
+      conference_starts_at: moderationItem.conference_starts_at,
+      conference_ends_at: moderationItem.conference_ends_at,
     }
 
     // Insert CFP
@@ -225,6 +229,8 @@ export class SupabaseCfpDirectory implements ICfpDirectory {
       conference_city: payload.conference.city,
       conference_country: payload.conference.country,
       conference_platform: payload.conference.platform || null,
+      conference_starts_at: payload.conference.startsAt || null,
+      conference_ends_at: payload.conference.endsAt || null,
       cfp_title: payload.conference.name, // Use conference name as CFP title
       cfp_url: payload.cfp.cfpUrl,
       cfp_topics: payload.cfp.topics,
@@ -295,10 +301,12 @@ export class SupabaseCfpDirectory implements ICfpDirectory {
     if (data.perks?.honorarium !== undefined) updateData.perks_honorarium = data.perks.honorarium
     if (data.websiteUrl !== undefined) updateData.website_url = data.websiteUrl
     if (data.cfpUrl !== undefined) updateData.cfp_url = data.cfpUrl
-    if (data.timeline?.opensAt !== undefined) updateData.timeline_opens_at = data.timeline.opensAt
-    if (data.timeline?.closesAt !== undefined) updateData.timeline_closes_at = data.timeline.closesAt
+    if (data.timeline?.opensAt !== undefined) updateData.timeline_opens_at = data.timeline.opensAt ? data.timeline.opensAt : null
+    if (data.timeline?.closesAt !== undefined) updateData.timeline_closes_at = data.timeline.closesAt ? data.timeline.closesAt : null
     if (data.platform !== undefined) updateData.platform = data.platform
     if (data.notes !== undefined) updateData.notes = data.notes
+    if (data.conferenceStartsAt !== undefined) updateData.conference_starts_at = data.conferenceStartsAt ? data.conferenceStartsAt : null
+    if (data.conferenceEndsAt !== undefined) updateData.conference_ends_at = data.conferenceEndsAt ? data.conferenceEndsAt : null
 
     // Update slug if title changed
     if (data.title) {

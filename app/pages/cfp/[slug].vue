@@ -20,6 +20,19 @@
     </div>
 
     <div v-else-if="cfp">
+      <!-- Structured Data for CFP -->
+      <StructuredData type="cfp" :data="cfp" />
+      <StructuredData
+        type="breadcrumb"
+        :data="{
+          items: [
+            { name: 'Home', path: '/' },
+            { name: 'Search', path: '/search' },
+            { name: cfp.title, path: `/cfp/${cfp.slug}` }
+          ]
+        }"
+      />
+
       <!-- Header -->
       <div class="mb-8">
         <div class="flex justify-between items-start mb-4">
@@ -78,7 +91,7 @@
 
               <div>
                 <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                  Timeline
+                  CFP Timeline
                 </label>
                 <div class="space-y-1">
                   <p v-if="cfp.timeline.opensAt" class="text-sm text-gray-600 dark:text-gray-400">
@@ -86,6 +99,20 @@
                   </p>
                   <p class="text-sm text-gray-600 dark:text-gray-400">
                     Closes: {{ formatDate(cfp.timeline.closesAt) }}
+                  </p>
+                </div>
+              </div>
+
+              <div v-if="cfp.conferenceStartsAt || cfp.conferenceEndsAt">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Conference Dates
+                </label>
+                <div class="space-y-1">
+                  <p v-if="cfp.conferenceStartsAt" class="text-sm text-gray-600 dark:text-gray-400">
+                    Starts: {{ formatDate(cfp.conferenceStartsAt) }}
+                  </p>
+                  <p v-if="cfp.conferenceEndsAt" class="text-sm text-gray-600 dark:text-gray-400">
+                    Ends: {{ formatDate(cfp.conferenceEndsAt) }}
                   </p>
                 </div>
               </div>
